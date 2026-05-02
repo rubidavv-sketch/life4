@@ -1,483 +1,1237 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Life After Climate Change</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
-    --green-dark: #1a3c2a; --green-mid: #2d6a4f; --green-light: #52b788;
-    --green-pale: #d8f3dc; --amber: #e09f3e; --cream: #f8f5f0;
-    --text: #1c1c1c; --muted: #6b7280; --border: #e0ddd7; --white: #ffffff;
-    --card-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    --earth: #2C4A2E;
+    --earth-mid: #4A7C51;
+    --earth-pale: #D9E8D4;
+    --sand: #F5EFE0;
+    --sand-dark: #E8D9B8;
+    --bark: #3D2B1F;
+    --clay: #B5613A;
+    --clay-light: #F2D4C4;
+    --sky: #5E8FA3;
+    --sky-light: #D6EAF0;
+    --text: #1A2410;
+    --text-muted: #5A6450;
+    --text-light: #8A9680;
+    --white: #FDFAF5;
   }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
 
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
   nav {
-    background: var(--green-dark); padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 60px; position: sticky; top: 0; z-index: 100;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(253, 250, 245, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand-dark);
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--green-pale); letter-spacing: 0.5px; }
-  .logo span { color: var(--green-light); }
-  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
-  .nav-links a { color: #a8c8b8; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; cursor: pointer; }
-  .nav-links a:hover { color: var(--green-pale); }
-  .nav-btn { background: var(--green-light); color: var(--green-dark); border: none; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
 
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--earth);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .nav-brand span { color: var(--clay); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--earth); }
+
+  .nav-cta {
+    background: var(--earth);
+    color: var(--white) !important;
+    padding: 0.45rem 1.2rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--bark) !important; color: var(--white) !important; }
+
+  /* ─── HERO ─── */
   .hero {
-    background: linear-gradient(135deg, var(--green-dark) 0%, #1a4d3a 60%, #2d6a4f 100%);
-    padding: 4rem 2rem 3rem; text-align: center; position: relative; overflow: hidden;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
   }
-  .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2352b788' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  .hero-left {
+    background: var(--earth);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 3rem;
+    position: relative;
+    overflow: hidden;
   }
-  .hero-tag { display: inline-block; background: rgba(82,183,136,0.2); color: var(--green-light); font-size: 0.72rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem; }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); color: var(--green-pale); max-width: 700px; margin: 0 auto 1rem; line-height: 1.2; }
-  .hero p { color: #a8c8b8; font-size: 1rem; max-width: 500px; margin: 0 auto 2rem; font-weight: 300; line-height: 1.7; }
-  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary { background: var(--green-light); color: var(--green-dark); border: none; padding: 10px 22px; border-radius: 25px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: transform 0.15s; }
-  .btn-primary:hover { transform: translateY(-1px); }
-  .btn-outline { background: transparent; color: var(--green-pale); border: 1px solid rgba(216,243,220,0.3); padding: 10px 22px; border-radius: 25px; font-weight: 400; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; }
 
-  .stats-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0.8rem 2rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
-  .stat { text-align: center; }
-  .stat-num { font-size: 1.1rem; font-weight: 700; color: var(--green-mid); }
-  .stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
 
-  .main-layout { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1fr 320px; gap: 2rem; }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--earth-pale);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+  }
 
-  .ai-panel { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); position: sticky; top: 75px; height: fit-content; }
-  .ai-header { background: var(--green-mid); padding: 0.9rem 1rem; display: flex; align-items: center; gap: 8px; }
-  .ai-dot { width: 8px; height: 8px; background: var(--green-light); border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  .ai-header span { color: var(--green-pale); font-size: 0.85rem; font-weight: 500; }
-  .ai-body { padding: 1rem; }
-  .ai-tabs { display: flex; gap: 4px; margin-bottom: 0.8rem; }
-  .ai-tab { flex: 1; padding: 6px; font-size: 0.75rem; font-weight: 500; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; background: var(--cream); color: var(--muted); font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .ai-tab.active { background: var(--green-pale); border-color: var(--green-light); color: var(--green-dark); }
-  .ai-section { display: none; }
-  .ai-section.active { display: block; }
-  .ai-form label { font-size: 0.78rem; color: var(--muted); display: block; margin-bottom: 4px; }
-  .ai-form select, .ai-form input, .ai-form textarea { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); margin-bottom: 0.6rem; outline: none; }
-  .ai-form select:focus, .ai-form input:focus, .ai-form textarea:focus { border-color: var(--green-light); }
-  .ai-form textarea { resize: vertical; min-height: 64px; }
-  .ai-generate-btn { width: 100%; padding: 8px; background: var(--green-mid); color: white; border: none; border-radius: 6px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; transition: background 0.2s; }
-  .ai-generate-btn:hover { background: var(--green-dark); }
-  .ai-generate-btn:disabled { background: #aaa; cursor: not-allowed; }
-  .ai-output { margin-top: 0.8rem; padding: 0.8rem; background: var(--cream); border-radius: 8px; font-size: 0.82rem; line-height: 1.6; color: var(--text); min-height: 60px; border: 1px solid var(--border); max-height: 260px; overflow-y: auto; white-space: pre-wrap; }
-  .ai-output .placeholder { color: var(--muted); font-style: italic; }
-  .ai-search-wrap { position: relative; margin-bottom: 0.6rem; }
-  .ai-search-wrap input { padding-right: 32px; }
-  .search-icon { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; font-size: 14px; }
-  .search-result { padding: 0.6rem 0.8rem; background: var(--cream); border-radius: 6px; font-size: 0.8rem; border: 1px solid var(--border); color: var(--text); min-height: 50px; line-height: 1.6; }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.12;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
 
-  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
-  .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; }
-  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.2rem; }
-  .filter-btn { padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 500; border: 1px solid var(--border); background: white; cursor: pointer; color: var(--muted); transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
-  .filter-btn.active { background: var(--green-mid); color: white; border-color: var(--green-mid); }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--clay);
+  }
 
-  .post-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; box-shadow: var(--card-shadow); transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; }
-  .post-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-  .post-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 0.6rem; flex-wrap: wrap; }
-  .category-badge { font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .cat-science { background: #d1fae5; color: #065f46; }
-  .cat-policy { background: #dbeafe; color: #1e40af; }
-  .cat-action { background: #fef3c7; color: #92400e; }
-  .cat-tech { background: #ede9fe; color: #5b21b6; }
-  .post-date { font-size: 0.75rem; color: var(--muted); }
-  .read-time { font-size: 0.75rem; color: var(--muted); margin-left: auto; }
-  .post-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.4rem; line-height: 1.3; }
-  .post-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.8rem; }
-  .post-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-  .author-row { display: flex; align-items: center; gap: 6px; }
-  .avatar { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; color: white; }
-  .author-name { font-size: 0.78rem; color: var(--muted); }
-  .post-actions-row { display: flex; gap: 6px; align-items: center; }
-  .summarize-btn { background: var(--green-pale); color: var(--green-dark); border: 1px solid var(--green-light); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.15s; }
-  .summarize-btn:hover { background: var(--green-light); }
-  .linkedin-badge { background: #e8f0fe; color: #1a56db; border: 1px solid #c3d7fa; padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 500; text-decoration: none; }
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--earth-pale);
+    line-height: 1.75;
+    max-width: 400px;
+    margin-bottom: 2.5rem;
+  }
 
-  .loading-state { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.9rem; }
-  .error-state { text-align: center; padding: 2rem; color: #b91c1c; background: #fef2f2; border-radius: 8px; border: 1px solid #fecaca; font-size: 0.85rem; }
-  .loading-spinner { width: 32px; height: 32px; border: 3px solid var(--green-pale); border-top-color: var(--green-mid); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
-  .modal-overlay.open { display: flex; }
-  .modal { background: var(--white); border-radius: 14px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 1.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
-  .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; max-width: 90%; line-height: 1.3; }
-  .modal-close { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 1.2rem; line-height: 1; flex-shrink: 0; }
-  .modal-body { font-size: 0.9rem; line-height: 1.7; color: var(--text); }
-  .modal-summary { background: var(--green-pale); border-left: 3px solid var(--green-mid); padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; margin-bottom: 1rem; font-size: 0.85rem; color: var(--green-dark); line-height: 1.6; }
-  .loading-dots { color: var(--muted); animation: blink 1.2s infinite; }
-  @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+  .btn-primary {
+    background: var(--clay);
+    color: var(--white);
+    padding: 0.75rem 1.75rem;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #9e4d2b; transform: translateY(-1px); }
 
-  .newsletter-box { background: var(--green-dark); border-radius: 12px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; }
-  .newsletter-box h3 { font-family: 'Playfair Display', serif; color: var(--green-pale); margin-bottom: 0.5rem; }
-  .newsletter-box p { color: #a8c8b8; font-size: 0.85rem; margin-bottom: 1rem; }
-  .newsletter-row { display: flex; gap: 6px; }
-  .newsletter-row input { flex: 1; padding: 8px 12px; border-radius: 6px; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; }
-  .newsletter-row button { background: var(--green-light); color: var(--green-dark); border: none; padding: 8px 14px; border-radius: 6px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; white-space: nowrap; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--earth-pale);
+    padding: 0.75rem 1.75rem;
+    border: 1px solid rgba(217,232,212,0.3);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--earth-pale); color: var(--white); }
 
-  @media (max-width: 720px) { .main-layout { grid-template-columns: 1fr; } .ai-panel { position: static; } }
+  .hero-stats {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 3rem;
+  }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--earth-pale);
+    opacity: 0.6;
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  /* hero right */
+  .hero-right {
+    background: var(--sand);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 3rem;
+  }
+
+  .hero-illustration {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+  }
+
+  .hero-feature-card {
+    position: relative;
+    z-index: 2;
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
+    border-radius: 4px;
+    padding: 1.5rem;
+    max-width: 320px;
+    box-shadow: 0 8px 32px rgba(44,74,46,0.08);
+    animation: floatUp 6s ease-in-out infinite;
+  }
+
+  @keyframes floatUp {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .card-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 0.5rem;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .card-meta {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--sand-dark);
+    display: inline-block;
+  }
+
+  /* ─── TICKER ─── */
+  .ticker-wrap {
+    background: var(--bark);
+    overflow: hidden;
+    padding: 0.7rem 0;
+  }
+
+  .ticker {
+    display: flex;
+    gap: 4rem;
+    animation: ticker 28s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay-light);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .ticker-item::after {
+    content: '◆';
+    color: var(--clay);
+    font-size: 0.5rem;
+  }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  /* ─── LATEST ARTICLES ─── */
+  .articles-section {
+    padding: 5rem 3rem;
+  }
+
+  .articles-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+
+  .articles-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .filter-tab {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .filter-tab:hover { border-color: var(--sand-dark); color: var(--text); }
+  .filter-tab.active { background: var(--earth); color: var(--white); border-color: var(--earth); }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr 1fr 1fr;
+    gap: 1.5px;
+    background: var(--sand-dark);
+    border: 1.5px solid var(--sand-dark);
+  }
+
+  .article-card {
+    background: var(--white);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: background 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .article-card:hover { background: var(--sand); }
+
+  .article-card.featured {
+    padding: 2.5rem;
+    background: var(--earth);
+    cursor: pointer;
+  }
+  .article-card.featured:hover { background: #243d26; }
+
+  .article-category {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1px;
+  }
+
+  .cat-science  { background: var(--sky-light); color: var(--sky); }
+  .cat-policy   { background: var(--clay-light); color: var(--clay); }
+  .cat-action   { background: var(--earth-pale); color: var(--earth); }
+  .cat-tech     { background: #E8E0F5; color: #5B4A8A; }
+
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .article-card.featured .article-title {
+    font-size: 1.6rem;
+    color: var(--white);
+  }
+
+  .article-card:not(.featured) .article-title {
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .article-excerpt {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--earth-pale);
+    flex: 1;
+  }
+
+  .article-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(217,232,212,0.15);
+  }
+
+  .article-footer .author { font-size: 0.75rem; color: var(--earth-pale); opacity: 0.7; }
+  .article-footer .read-time { font-size: 0.7rem; font-family: 'DM Mono', monospace; color: var(--earth-pale); opacity: 0.5; }
+
+  .article-card:not(.featured) .article-footer {
+    border-color: var(--sand-dark);
+  }
+  .article-card:not(.featured) .article-footer .author { color: var(--text-light); opacity: 1; }
+  .article-card:not(.featured) .article-footer .read-time { color: var(--text-light); }
+
+  /* ─── AI ASSISTANT ─── */
+  .ai-section {
+    padding: 5rem 3rem;
+    background: var(--sand);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .ai-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .ai-left p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    max-width: 380px;
+  }
+
+  .feature-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .feature-pill {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--sand-dark);
+    border-radius: 100px;
+    color: var(--text-muted);
+    background: var(--white);
+    font-weight: 400;
+  }
+
+  .chat-widget {
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(44,74,46,0.06);
+  }
+
+  .chat-header {
+    background: var(--earth);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .chat-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--earth-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--earth);
+  }
+
+  .chat-header-text {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .chat-online {
+    margin-left: auto;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #6FCF7A;
+  }
+
+  .chat-body {
+    padding: 1.5rem;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    max-height: 300px;
+  }
+
+  .chat-bubble {
+    max-width: 82%;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .bubble-bot {
+    background: var(--sand);
+    color: var(--text);
+    align-self: flex-start;
+    border-radius: 0 4px 4px 4px;
+  }
+
+  .bubble-user {
+    background: var(--earth);
+    color: var(--white);
+    align-self: flex-end;
+    border-radius: 4px 0 4px 4px;
+  }
+
+  .chat-input-row {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--sand-dark);
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .chat-input {
+    flex: 1;
+    border: 1px solid var(--sand-dark);
+    border-radius: 3px;
+    padding: 0.6rem 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--earth-mid); }
+  .chat-input::placeholder { color: var(--text-light); }
+
+  .chat-send {
+    background: var(--clay);
+    color: var(--white);
+    border: none;
+    border-radius: 3px;
+    padding: 0 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .chat-send:hover { background: #9e4d2b; }
+
+  /* ─── NEWSLETTER ─── */
+  .newsletter-section {
+    padding: 5rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    border-top: 1px solid var(--sand-dark);
+  }
+
+  .newsletter-left .section-label { color: var(--clay); }
+
+  .newsletter-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-left p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  .subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .subscribe-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .subscribe-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .subscribe-input {
+    border: 1px solid var(--sand-dark);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--white);
+  }
+  .subscribe-input:focus { border-color: var(--earth); }
+
+  .subscribe-btn {
+    background: var(--earth);
+    color: var(--white);
+    border: none;
+    padding: 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.25rem;
+  }
+  .subscribe-btn:hover { background: var(--bark); }
+
+  .trust-line {
+    font-size: 0.72rem;
+    color: var(--text-light);
+  }
+
+  /* ─── TOPICS ─── */
+  .topics-section {
+    background: var(--earth);
+    padding: 4rem 3rem;
+  }
+
+  .topics-section .section-label { color: rgba(217,232,212,0.5); }
+
+  .topics-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(217,232,212,0.12);
+    border: 1px solid rgba(217,232,212,0.12);
+  }
+
+  .topic-card {
+    background: transparent;
+    padding: 1.75rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .topic-card:hover { background: rgba(217,232,212,0.05); }
+
+  .topic-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+
+  .topic-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .topic-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--earth-pale);
+    opacity: 0.55;
+  }
+
+  /* ─── WRITE ─── */
+  .write-section {
+    padding: 5rem 3rem;
+    background: var(--clay-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .write-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    max-width: 560px;
+    margin-bottom: 1rem;
+    color: var(--bark);
+  }
+
+  .write-section h2 em { color: var(--clay); }
+
+  .write-section p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  .write-btn {
+    background: var(--clay);
+    color: var(--white);
+    padding: 0.9rem 2.5rem;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .write-btn:hover { background: #9e4d2b; transform: translateY(-2px); }
+
+  .contributor-row {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .contributor-avatars { display: flex; }
+
+  .c-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--clay-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-left: -8px;
+  }
+  .c-avatar:first-child { margin-left: 0; }
+
+  .contributor-text { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bark);
+    color: var(--earth-pale);
+    padding: 3rem 3rem 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-brand span { color: var(--clay); }
+
+  .footer-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--earth-pale);
+    opacity: 0.6;
+    max-width: 260px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    color: var(--earth-pale);
+    opacity: 0.4;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col a {
+    font-size: 0.83rem;
+    color: var(--earth-pale);
+    opacity: 0.6;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .footer-col a:hover { opacity: 1; }
+
+  .footer-bottom {
+    background: var(--bark);
+    border-top: 1px solid rgba(217,232,212,0.08);
+    padding: 1.25rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-bottom p {
+    font-size: 0.72rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--earth-pale);
+    opacity: 0.35;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease both; }
+  .hero-headline { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.4s ease both; }
+  .hero-feature-card { animation: fadeUp 0.7s 0.5s ease both; }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="logo">Life after climate change </div>
-  <div class="nav-links">
-    <a onclick="setFilter('science')">Science</a>
-    <a onclick="setFilter('policy')">Policy</a>
-    <a onclick="setFilter('action')">Action</a>
-    <a onclick="setFilter('tech')">Tech</a>
-    <button class="nav-btn" onclick="openWriteModal()">+ Write</button>
-  </div>
+  <a class="nav-brand" href="#">Life <span>After</span> Climate Change</a>
+  <ul class="nav-links">
+    <li><a href="#">Science</a></li>
+    <li><a href="#">Policy</a></li>
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Tech</a></li>
+    <li><a href="#" class="nav-cta">Write +</a></li>
+  </ul>
 </nav>
 
-<div class="hero">
-  <div class="hero-tag">Climate Intelligence</div>
-  <h1>Stories that matter for a changing planet</h1>
-  <p>Science-backed journalism, community perspectives, and actionable insights on climate change.</p>
-  <div class="hero-actions">
-    <button class="btn-primary" onclick="document.getElementById('posts-section').scrollIntoView({behavior:'smooth'})">Explore Articles</button>
-    <button class="btn-outline">Join Community</button>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Est. 2023 · India's climate platform</p>
+    <h1 class="hero-headline">Stories that matter<br>for a <em>changing</em><br>planet.</h1>
+    <p class="hero-sub">Science-backed journalism, community perspectives, and actionable insights on climate change — from voices across 47 countries.</p>
+    <div class="hero-actions">
+      <a href="#articles" class="btn-primary">Explore Articles</a>
+      <a href="#community" class="btn-ghost">Join Community</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">412K</span>
+        <span class="hero-stat-label">Readers</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">186</span>
+        <span class="hero-stat-label">Contributors</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">47</span>
+        <span class="hero-stat-label">Countries</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <svg class="hero-illustration" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <rect width="600" height="700" fill="#D9E8D4"/>
+      <ellipse cx="480" cy="120" rx="180" ry="160" fill="#C8DFBC" opacity="0.5"/>
+      <ellipse cx="100" cy="80" rx="120" ry="100" fill="#C8DFBC" opacity="0.35"/>
+      <circle cx="460" cy="130" r="55" fill="#F5EFE0" opacity="0.85"/>
+      <circle cx="460" cy="130" r="42" fill="#F5EFE0"/>
+      <ellipse cx="0" cy="620" rx="280" ry="120" fill="#4A7C51"/>
+      <ellipse cx="600" cy="650" rx="260" ry="100" fill="#3D6B44"/>
+      <ellipse cx="300" cy="680" rx="360" ry="90" fill="#2C4A2E"/>
+      <g opacity="0.7">
+        <rect x="80" y="460" width="7" height="90" fill="#2C4A2E"/>
+        <ellipse cx="83" cy="450" rx="28" ry="35" fill="#3D6B44"/>
+        <ellipse cx="70" cy="460" rx="20" ry="28" fill="#4A7C51"/>
+        <ellipse cx="96" cy="455" rx="22" ry="30" fill="#2C4A2E"/>
+        <rect x="170" y="430" width="9" height="110" fill="#2C4A2E"/>
+        <ellipse cx="174" cy="415" rx="36" ry="46" fill="#2C4A2E"/>
+        <ellipse cx="160" cy="425" rx="26" ry="36" fill="#4A7C51"/>
+        <ellipse cx="188" cy="420" rx="28" ry="38" fill="#3D6B44"/>
+        <rect x="460" y="450" width="8" height="100" fill="#2C4A2E"/>
+        <ellipse cx="464" cy="438" rx="32" ry="40" fill="#3D6B44"/>
+        <ellipse cx="450" cy="448" rx="22" ry="30" fill="#4A7C51"/>
+        <ellipse cx="477" cy="443" rx="24" ry="32" fill="#2C4A2E"/>
+      </g>
+      <g fill="none" stroke="#3D2B1F" stroke-width="1.5" stroke-linecap="round" opacity="0.45">
+        <path d="M200 200 Q206 194 212 200"/>
+        <path d="M218 190 Q225 183 232 190"/>
+        <path d="M240 205 Q246 199 252 205"/>
+      </g>
+      <path d="M0 580 Q150 565 300 580 Q450 595 600 580 L600 700 L0 700 Z" fill="#2C4A2E" opacity="0.3"/>
+    </svg>
+    <div class="hero-feature-card">
+      <p class="card-eyebrow">Featured · Science</p>
+      <p class="card-title">How monsoon patterns are shifting across South Asia</p>
+      <div class="card-meta">
+        <span>Priya Nair</span>
+        <span class="card-dot"></span>
+        <span>7 min read</span>
+        <span class="card-dot"></span>
+        <span>Apr 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span class="ticker-item">CO₂ at 425 ppm</span>
+    <span class="ticker-item">Arctic ice extent — 12.3M km²</span>
+    <span class="ticker-item">Global avg temp +1.48°C above pre-industrial</span>
+    <span class="ticker-item">412K readers worldwide</span>
+    <span class="ticker-item">186 contributors</span>
+    <span class="ticker-item">CO₂ at 425 ppm</span>
+    <span class="ticker-item">Arctic ice extent — 12.3M km²</span>
+    <span class="ticker-item">Global avg temp +1.48°C above pre-industrial</span>
+    <span class="ticker-item">412K readers worldwide</span>
+    <span class="ticker-item">186 contributors</span>
   </div>
 </div>
 
-<div class="stats-bar">
-  <div class="stat"><div class="stat-num" id="stat-articles">—</div><div class="stat-label">Articles</div></div>
-  <div class="stat"><div class="stat-num">412K</div><div class="stat-label">Readers</div></div>
-  <div class="stat"><div class="stat-num">186</div><div class="stat-label">Contributors</div></div>
-  <div class="stat"><div class="stat-num">47</div><div class="stat-label">Countries</div></div>
-</div>
-
-<div class="main-layout">
-  <div id="posts-section">
-    <div class="section-header">
-      <h2>Latest Articles</h2>
+<!-- ARTICLES -->
+<section class="articles-section" id="articles">
+  <div class="articles-header">
+    <div>
+      <p class="section-label">Latest Articles</p>
+      <h2 class="articles-title">The Conversation</h2>
     </div>
-    <div class="filter-row" id="filters">
-      <button class="filter-btn active" data-cat="all">All</button>
-      <button class="filter-btn" data-cat="science">Science</button>
-      <button class="filter-btn" data-cat="policy">Policy</button>
-      <button class="filter-btn" data-cat="action">Action</button>
-      <button class="filter-btn" data-cat="tech">Tech</button>
+    <div class="filter-tabs">
+      <button class="filter-tab active">All</button>
+      <button class="filter-tab">Science</button>
+      <button class="filter-tab">Policy</button>
+      <button class="filter-tab">Action</button>
+      <button class="filter-tab">Tech</button>
     </div>
-    <div id="posts-list">
-      <div class="loading-state">
-        <div class="loading-spinner"></div>
-        Loading articles…
+  </div>
+  <div class="articles-grid">
+    <div class="article-card featured">
+      <span class="article-category cat-science">Science</span>
+      <h3 class="article-title">The silent crisis beneath India's soil: how agricultural runoff is altering river chemistry</h3>
+      <p class="article-excerpt">Decades of intensive farming have reshaped the chemical composition of India's major rivers. Researchers now warn the feedback loop with the climate is accelerating faster than models predicted.</p>
+      <div class="article-footer">
+        <span class="author">Dr. Arjun Mehta</span>
+        <span class="read-time">12 min</span>
       </div>
     </div>
-    <div class="newsletter-box">
-      <h3>Stay in the know</h3>
-      <p>Weekly climate digest — no noise, just signal.</p>
-      <div class="newsletter-row">
-        <input placeholder="your@email.com" type="email"/>
-        <button>Subscribe</button>
+    <div class="article-card">
+      <span class="article-category cat-policy">Policy</span>
+      <h3 class="article-title">India's updated NDCs: ambition vs. implementation</h3>
+      <div style="flex:1"></div>
+      <div class="article-footer">
+        <span class="author">Sunita Rao</span>
+        <span class="read-time">8 min</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="article-category cat-action">Action</span>
+      <h3 class="article-title">Mangrove restoration co-ops in Odisha's coastal belt</h3>
+      <div style="flex:1"></div>
+      <div class="article-footer">
+        <span class="author">Bikash Das</span>
+        <span class="read-time">6 min</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="article-category cat-tech">Tech</span>
+      <h3 class="article-title">Solar microgrids in Bihar: the data after three years</h3>
+      <div style="flex:1"></div>
+      <div class="article-footer">
+        <span class="author">Neha Kulkarni</span>
+        <span class="read-time">9 min</span>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="ai-panel">
-    <div class="ai-header">
-      <div class="ai-dot"></div>
-      <span>AI Climate Assistant</span>
-    </div>
-    <div class="ai-body">
-      <div class="ai-tabs">
-        <button class="ai-tab active" onclick="switchTab('generate')">Generate</button>
-        <button class="ai-tab" onclick="switchTab('search')">Ask</button>
-        <button class="ai-tab" onclick="switchTab('trends')">Trends</button>
-      </div>
-
-      <div class="ai-section active" id="tab-generate">
-        <div class="ai-form">
-          <label>Topic</label>
-          <input id="gen-topic" placeholder="e.g. Arctic ice melt 2024" />
-          <label>Category</label>
-          <select id="gen-cat">
-            <option>Science</option><option>Policy</option><option>Action</option><option>Tech</option>
-          </select>
-          <label>Tone</label>
-          <select id="gen-tone">
-            <option>Informative</option><option>Urgent</option><option>Hopeful</option><option>Critical</option>
-          </select>
-          <button class="ai-generate-btn" id="gen-btn" onclick="generatePost()">Generate Article Intro ↗</button>
-        </div>
-        <div class="ai-output" id="gen-output"><span class="placeholder">Your AI-generated intro will appear here…</span></div>
-      </div>
-
-      <div class="ai-section" id="tab-search">
-        <div class="ai-form">
-          <label>Ask about climate change</label>
-          <div class="ai-search-wrap">
-            <input id="search-q" placeholder="e.g. What causes sea level rise?" onkeydown="if(event.key==='Enter')askClimate()"/>
-            <span class="search-icon">⌕</span>
-          </div>
-          <button class="ai-generate-btn" onclick="askClimate()">Ask AI ↗</button>
-        </div>
-        <div class="search-result" id="search-result"><span style="color:var(--muted);font-style:italic">Ask any climate question…</span></div>
-      </div>
-
-      <div class="ai-section" id="tab-trends">
-        <div class="ai-form">
-          <button class="ai-generate-btn" onclick="getTrends()">Fetch Trending Topics ↗</button>
-        </div>
-        <div class="ai-output" id="trends-output"><span class="placeholder">Click to load current climate trends…</span></div>
-      </div>
+<!-- AI ASSISTANT -->
+<section class="ai-section" id="ai">
+  <div class="ai-left">
+    <p class="section-label">AI Climate Intelligence</p>
+    <h2>Ask anything.<br>Get clarity.</h2>
+    <p>Our climate AI can generate story intros, answer science questions, and surface the latest research — trained on verified sources and updated weekly.</p>
+    <div class="feature-pills">
+      <span class="feature-pill">Generate article intros</span>
+      <span class="feature-pill">Ask climate questions</span>
+      <span class="feature-pill">Trending topics</span>
+      <span class="feature-pill">Science summaries</span>
     </div>
   </div>
-</div>
-
-<!-- ARTICLE MODAL -->
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h2 id="modal-title">Article</h2>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+  <div class="chat-widget">
+    <div class="chat-header">
+      <div class="chat-avatar">AI</div>
+      <span class="chat-header-text">Climate AI Assistant</span>
+      <div class="chat-online"></div>
     </div>
-    <div class="modal-body">
-      <div id="modal-summary-box" style="display:none">
-        <strong style="font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--green-mid)">AI Summary</strong>
-        <div class="modal-summary" id="modal-summary-text"></div>
-      </div>
-      <p id="modal-content"></p>
-      <div id="modal-linkedin-link" style="margin-top:0.8rem;display:none">
-        <a id="modal-linkedin-url" href="#" target="_blank" class="linkedin-badge">Read full article on LinkedIn →</a>
-      </div>
-      <div style="margin-top:1rem;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn-primary" style="font-size:0.82rem;padding:7px 16px" onclick="summarizeModal()">Summarize with AI</button>
-        <button onclick="closeModal()" style="font-size:0.82rem;padding:7px 16px;border:1px solid var(--border);color:var(--text);border-radius:25px;background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif">Close</button>
-      </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-bubble bubble-bot">Hello! I can answer climate questions, summarise research, or help generate story ideas. What would you like to explore?</div>
+      <div class="chat-bubble bubble-user">What's causing the unusual heat in northwest India this year?</div>
+      <div class="chat-bubble bubble-bot">Several factors are combining: a persistent western disturbance, reduced pre-monsoon cloud cover, and land surface temperatures elevated by the 2023–24 El Niño hangover. This pattern is consistent with long-term warming trends in the Indo-Gangetic Plain.</div>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatInput" type="text" placeholder="Ask a climate question…"/>
+      <button class="chat-send" id="chatSend">Ask →</button>
     </div>
   </div>
-</div>
+</section>
 
-<!-- WRITE MODAL -->
-<div class="modal-overlay" id="write-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h2>Write an Article</h2>
-      <button class="modal-close" onclick="document.getElementById('write-modal').classList.remove('open')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="ai-form">
-        <label>Title</label>
-        <input id="write-title" placeholder="Article title…" />
-        <label>Category</label>
-        <select id="write-cat">
-          <option value="science">Science</option>
-          <option value="policy">Policy</option>
-          <option value="action">Action</option>
-          <option value="tech">Tech</option>
-        </select>
-        <label>LinkedIn Article URL (optional)</label>
-        <input id="write-linkedin" placeholder="https://www.linkedin.com/pulse/…" />
-        <label>Content / Excerpt</label>
-        <textarea id="write-content" style="min-height:120px" placeholder="Write your article or paste your LinkedIn article text…"></textarea>
-        <button class="ai-generate-btn" onclick="publishPost()">Publish Article</button>
+<!-- TOPICS -->
+<section class="topics-section">
+  <p class="section-label">Browse by topic</p>
+  <h2>Find your focus</h2>
+  <div class="topics-grid">
+    <a class="topic-card" href="#">
+      <div class="topic-icon">🌊</div>
+      <p class="topic-name">Oceans & Water</p>
+      <p class="topic-count">84 articles</p>
+    </a>
+    <a class="topic-card" href="#">
+      <div class="topic-icon">🌾</div>
+      <p class="topic-name">Food & Agriculture</p>
+      <p class="topic-count">61 articles</p>
+    </a>
+    <a class="topic-card" href="#">
+      <div class="topic-icon">🏙️</div>
+      <p class="topic-name">Urban Resilience</p>
+      <p class="topic-count">52 articles</p>
+    </a>
+    <a class="topic-card" href="#">
+      <div class="topic-icon">⚡</div>
+      <p class="topic-name">Clean Energy</p>
+      <p class="topic-count">78 articles</p>
+    </a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section" id="community">
+  <div class="newsletter-left">
+    <p class="section-label">Stay Informed</p>
+    <h2>Weekly climate digest — no noise, just signal.</h2>
+    <p>Curated science, policy updates, and on-the-ground stories delivered every Thursday. Read by researchers, journalists, and changemakers.</p>
+  </div>
+  <div>
+    <div class="subscribe-form">
+      <div class="subscribe-field">
+        <label class="subscribe-label">Your name</label>
+        <input class="subscribe-input" type="text" placeholder="Priya Sharma"/>
       </div>
+      <div class="subscribe-field">
+        <label class="subscribe-label">Email address</label>
+        <input class="subscribe-input" type="email" placeholder="you@example.com"/>
+      </div>
+      <button class="subscribe-btn">Subscribe to the digest →</button>
+      <p class="trust-line">No spam. Unsubscribe anytime. Free forever.</p>
     </div>
   </div>
+</section>
+
+<!-- WRITE CTA -->
+<section class="write-section">
+  <p class="section-label" style="color: var(--clay);">For Contributors</p>
+  <h2>Have a story the planet<br>needs to <em>hear?</em></h2>
+  <p>We publish writers, scientists, activists and policymakers from every corner of the world. Share your perspective and reach 412,000 readers who care.</p>
+  <a href="#" class="write-btn">Submit your article →</a>
+  <div class="contributor-row">
+    <div class="contributor-avatars">
+      <div class="c-avatar" style="background:#4A7C51;">PR</div>
+      <div class="c-avatar" style="background:#5E8FA3;">AM</div>
+      <div class="c-avatar" style="background:#B5613A;">ND</div>
+      <div class="c-avatar" style="background:#7B6B9E;">SK</div>
+      <div class="c-avatar" style="background:#2C4A2E;">BK</div>
+    </div>
+    <p class="contributor-text">Join 186 contributors across 47 countries</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p class="footer-brand">Life <span>After</span> Climate Change</p>
+    <p class="footer-desc">Science-backed climate journalism from the community that lives it. India-founded, globally read.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Read</h4>
+    <ul>
+      <li><a href="#">Science</a></li>
+      <li><a href="#">Policy</a></li>
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Tech</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contribute</h4>
+    <ul>
+      <li><a href="#">Write an Article</a></li>
+      <li><a href="#">Guidelines</a></li>
+      <li><a href="#">Community</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Platform</h4>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Newsletter</a></li>
+      <li><a href="#">AI Assistant</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Life After Climate Change. All rights reserved.</p>
+  <p>Built for a warming world.</p>
 </div>
 
 <script>
-let ALL_POSTS = [];
-let currentFilter = 'all';
-let openPostId = null;
-
-async function loadPosts() {
-  try {
-    const res = await fetch('./posts.json?v=' + Date.now());
-    if (!res.ok) throw new Error('Failed to load posts.json');
-    ALL_POSTS = await res.json();
-    ALL_POSTS.sort((a, b) => b.id - a.id);
-    document.getElementById('stat-articles').textContent = ALL_POSTS.length;
-    renderPosts();
-  } catch(e) {
-    document.getElementById('posts-list').innerHTML = `
-      <div class="error-state">
-        <strong>Could not load articles.</strong><br/>
-        Make sure <code>posts.json</code> is in the same folder as <code>index.html</code> and is valid JSON.<br/><br/>
-        <small>${e.message}</small>
-      </div>`;
-  }
-}
-
-function renderPosts() {
-  const list = document.getElementById('posts-list');
-  const filtered = currentFilter === 'all' ? ALL_POSTS : ALL_POSTS.filter(p => p.category === currentFilter);
-  if (!filtered.length) {
-    list.innerHTML = '<div class="loading-state">No articles in this category yet.</div>';
-    return;
-  }
-  list.innerHTML = filtered.map(p => `
-    <div class="post-card" onclick="openPost(${p.id})">
-      <div class="post-meta">
-        <span class="category-badge cat-${p.category}">${p.category}</span>
-        <span class="post-date">${p.date}</span>
-        <span class="read-time">${p.readTime} read</span>
-      </div>
-      <h3>${p.title}</h3>
-      <p>${p.excerpt}</p>
-      <div class="post-footer">
-        <div class="author-row">
-          <div class="avatar" style="background:${p.authorColor}">${p.authorInitials}</div>
-          <span class="author-name">${p.author}</span>
-        </div>
-        <div class="post-actions-row">
-          ${p.linkedinUrl ? `<a class="linkedin-badge" href="${p.linkedinUrl}" target="_blank" onclick="event.stopPropagation()">LinkedIn</a>` : ''}
-          <button class="summarize-btn" onclick="event.stopPropagation();openPost(${p.id},true)">AI Summary</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function setFilter(cat) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  renderPosts();
-}
-
-function openPost(id, autoSummarize=false) {
-  const post = ALL_POSTS.find(p => p.id === id);
-  openPostId = id;
-  document.getElementById('modal-title').textContent = post.title;
-  document.getElementById('modal-content').textContent = post.content;
-  document.getElementById('modal-summary-box').style.display = 'none';
-  document.getElementById('modal-summary-text').textContent = '';
-  const llBox = document.getElementById('modal-linkedin-link');
-  const llUrl = document.getElementById('modal-linkedin-url');
-  if (post.linkedinUrl) { llBox.style.display = 'block'; llUrl.href = post.linkedinUrl; } 
-  else { llBox.style.display = 'none'; }
-  document.getElementById('modal').classList.add('open');
-  if (autoSummarize) setTimeout(summarizeModal, 200);
-}
-
-function closeModal() { document.getElementById('modal').classList.remove('open'); }
-
-async function summarizeModal() {
-  const post = ALL_POSTS.find(p => p.id === openPostId);
-  const box = document.getElementById('modal-summary-box');
-  const txt = document.getElementById('modal-summary-text');
-  box.style.display = 'block';
-  txt.innerHTML = '<span class="loading-dots">Summarizing…</span>';
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:200,
-        system:'You are a climate science communicator. Summarize the article in 2-3 concise sentences.',
-        messages:[{role:'user',content:`Summarize:\n\nTitle: ${post.title}\n\n${post.content}`}] })
+  document.querySelectorAll('.filter-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
     });
-    const d = await res.json();
-    txt.textContent = d.content?.[0]?.text || 'Unable to summarize.';
-  } catch(e) { txt.textContent = 'Summary unavailable.'; }
-}
-
-async function generatePost() {
-  const topic = document.getElementById('gen-topic').value.trim();
-  if (!topic) { alert('Please enter a topic.'); return; }
-  const cat = document.getElementById('gen-cat').value;
-  const tone = document.getElementById('gen-tone').value;
-  const btn = document.getElementById('gen-btn');
-  const out = document.getElementById('gen-output');
-  btn.disabled = true; btn.textContent = 'Generating…';
-  out.innerHTML = '<span class="loading-dots">Writing your article intro…</span>';
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:300,
-        system:`You are a climate journalist. Write a compelling, ${tone.toLowerCase()} opening paragraph (3-4 sentences) for a ${cat} article. Be factual and engaging. No headlines, just the paragraph.`,
-        messages:[{role:'user',content:`Write an opening paragraph for: ${topic}`}] })
-    });
-    const d = await res.json();
-    out.textContent = d.content?.[0]?.text || 'Generation failed.';
-  } catch(e) { out.textContent = 'Generation failed. Please try again.'; }
-  btn.disabled = false; btn.textContent = 'Generate Article Intro ↗';
-}
-
-async function askClimate() {
-  const q = document.getElementById('search-q').value.trim();
-  if (!q) return;
-  const out = document.getElementById('search-result');
-  out.innerHTML = '<span class="loading-dots">Thinking…</span>';
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:250,
-        system:'You are a climate science expert. Answer questions clearly in 3-5 sentences.',
-        messages:[{role:'user',content:q}] })
-    });
-    const d = await res.json();
-    out.textContent = d.content?.[0]?.text || 'No answer found.';
-  } catch(e) { out.textContent = 'Could not get an answer.'; }
-}
-
-async function getTrends() {
-  const out = document.getElementById('trends-output');
-  out.innerHTML = '<span class="loading-dots">Loading trends…</span>';
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:300,
-        system:'You are a climate trend analyst. List 5 trending climate topics with a 1-sentence explanation each. Format: "1. Topic — explanation".',
-        messages:[{role:'user',content:'Top 5 trending climate topics this week?'}] })
-    });
-    const d = await res.json();
-    out.textContent = d.content?.[0]?.text || 'Unable to load trends.';
-  } catch(e) { out.textContent = 'Could not load trends.'; }
-}
-
-function switchTab(name) {
-  document.querySelectorAll('.ai-tab').forEach((t,i) => {
-    const tabs = ['generate','search','trends'];
-    t.classList.toggle('active', tabs[i] === name);
   });
-  document.querySelectorAll('.ai-section').forEach(s => s.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
-}
 
-function openWriteModal() { document.getElementById('write-modal').classList.add('open'); }
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  const chatBody = document.getElementById('chatBody');
 
-function publishPost() {
-  const title = document.getElementById('write-title').value.trim();
-  const content = document.getElementById('write-content').value.trim();
-  const cat = document.getElementById('write-cat').value;
-  const linkedinUrl = document.getElementById('write-linkedin').value.trim();
-  if (!title || !content) { alert('Please fill in title and content.'); return; }
-  ALL_POSTS.unshift({
-    id: Date.now(), title, excerpt: content.slice(0,120)+'…', category: cat,
-    date: 'Today', readTime: '3 min', author: 'You', authorInitials: 'ME',
-    authorColor: '#2d6a4f', content, linkedinUrl: linkedinUrl || null
-  });
-  document.getElementById('write-modal').classList.remove('open');
-  document.getElementById('write-title').value = '';
-  document.getElementById('write-content').value = '';
-  document.getElementById('write-linkedin').value = '';
-  currentFilter = 'all';
-  document.querySelectorAll('.filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
-  document.getElementById('stat-articles').textContent = ALL_POSTS.length;
-  renderPosts();
-}
-
-document.getElementById('filters').addEventListener('click', e => {
-  if (e.target.classList.contains('filter-btn')) {
-    setFilter(e.target.dataset.cat);
+  function sendMessage() {
+    const val = chatInput.value.trim();
+    if (!val) return;
+    const userBubble = document.createElement('div');
+    userBubble.className = 'chat-bubble bubble-user';
+    userBubble.textContent = val;
+    chatBody.appendChild(userBubble);
+    chatInput.value = '';
+    chatBody.scrollTop = chatBody.scrollHeight;
+    setTimeout(() => {
+      const botBubble = document.createElement('div');
+      botBubble.className = 'chat-bubble bubble-bot';
+      botBubble.textContent = 'Great question. Let me find the most relevant climate research on that for you…';
+      chatBody.appendChild(botBubble);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 900);
   }
-});
-document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) closeModal(); });
-document.getElementById('write-modal').addEventListener('click', e => { if(e.target===document.getElementById('write-modal')) document.getElementById('write-modal').classList.remove('open'); });
 
-loadPosts();
+  chatSend.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
 </script>
 </body>
 </html>
