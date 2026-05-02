@@ -1,0 +1,172 @@
+/* Add this CSS to your existing stylesheet */
+
+.admin-login-page,
+.admin-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+
+.admin-login-page {
+  min-height: 80vh;
+  display: grid;
+  place-items: center;
+}
+
+.admin-login-card {
+  max-width: 420px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5dfd2;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(23, 63, 53, 0.08);
+}
+
+.admin-login-card h1,
+.admin-container h1 {
+  color: #173f35;
+}
+
+.admin-login-card label,
+.article-editor-grid label {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  font-weight: 700;
+  color: #173f35;
+}
+
+.admin-login-card input,
+.article-editor-grid input,
+.article-editor-grid textarea,
+.article-editor-grid select {
+  width: 100%;
+  border: 1px solid #e5dfd2;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+}
+
+.admin-button,
+.admin-login-card button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #173f35;
+  color: #ffffff;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.admin-button.secondary {
+  background: #ffffff;
+  color: #173f35;
+  border: 1px solid #e5dfd2;
+}
+
+.admin-error {
+  background: #fff1f1;
+  color: #8b1e1e;
+  border: 1px solid #f1c6c6;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-top: 16px;
+}
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid #e5dfd2;
+  border-radius: 20px;
+}
+
+.admin-table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 14px;
+  border-bottom: 1px solid #e5dfd2;
+}
+
+.admin-table th {
+  background: #f5f1e8;
+  color: #6d6a63;
+}
+
+.status-pill {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.status-pill.published {
+  background: #eaf7ed;
+  color: #176032;
+}
+
+.status-pill.draft {
+  background: #fff5d7;
+  color: #755400;
+}
+
+.status-pill.archived {
+  background: #ededed;
+  color: #555555;
+}
+
+.link-button {
+  background: none;
+  border: 0;
+  color: #173f35;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.article-editor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+}
+
+.editor-main,
+.editor-side {
+  background: #ffffff;
+  border: 1px solid #e5dfd2;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+@media (max-width: 800px) {
+  .admin-topbar {
+    flex-direction: column;
+  }
+
+  .article-editor-grid {
+    grid-template-columns: 1fr;
+  }
+}
